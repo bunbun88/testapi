@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /testapi/
+
+# 1. /api/controller/action/id にマッチ（id は数字、任意）
+RewriteRule ^api/([a-zA-Z0-9_]+)/([a-zA-Z0-9_]+)/([0-9]+)$ api.php?controller=$1&action=$2&id=$3 [L,QSA]
+
+# 2. /api/controller/action にマッチ（id なし）
+RewriteRule ^api/([a-zA-Z0-9_]+)/([a-zA-Z0-9_]+)$ api.php?controller=$1&action=$2 [L,QSA]
+
+# 3. /api/controller にマッチ
+RewriteRule ^api/([a-zA-Z0-9_]+)/?$ api.php?controller=$1 [L,QSA]

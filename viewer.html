@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>PDFビューア</title>
+</head>
+<body>
+  <h1>PDFプレビュー</h1>
+  <button id="loadBtn">PDFを読み込む</button>
+  <br><br>
+  <iframe id="pdfViewer" width="600" height="800" style="border:1px solid #ccc;"></iframe>
+
+  <script>
+    document.getElementById('loadBtn').addEventListener('click', async () => {
+      const res = await fetch('/testapi/api/base64/');
+      const data = await res.json();
+
+      if (!data.content_base64) {
+        alert('PDFデータの取得に失敗しました');
+        return;
+      }
+
+      // Base64 → Blob → ObjectURL でiframeに表示
+      const byteCharacters = atob(data.content_base64);
+      const byteArrays = [];
+
+      for (let i = 0; i < byteCharacters.length; i++) {
+        byteArrays.push(byteCharacters.charCodeAt(i));
+      }
+
+      const byteArray = new Uint8Array(byteArrays);
+      const blob = new Blob([byteArray], { type: 'application/pdf' });
+      const blobUrl = URL.createObjectURL(blob);
+
+      document.getElementById('pdfViewer').src = blobUrl;
+    });
+  </script>
+</body>
+</html>
