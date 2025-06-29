@@ -1,4 +1,25 @@
 <?php
+// --- APIキー認証チェック ---
+$certPath = __DIR__ . '/cert.json';
+$clientApiKey = $_SERVER['HTTP_APIKEY'] ?? null;
+
+if (!file_exists($certPath)) {
+    http_response_code(500);
+    header('Content-Type: application/json');
+    echo json_encode(['error' => 'cert.json not found']);
+    exit;
+}
+
+$certs = json_decode(file_get_contents($certPath), true);
+
+// APIキーが存在しない、または不正な場合
+if (!$clientApiKey || !array_key_exists($clientApiKey, $certs)) {
+    http_response_code(401);
+    header('Content-Type: application/json');
+    echo json_encode(['error' => 'Unauthorized: invalid or missing API key']);
+    exit;
+}
+
 // パラメータ取得
 $controller = $_GET['controller'] ?? null;
 $action     = $_GET['action'] ?? null;

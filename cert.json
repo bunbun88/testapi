@@ -1,0 +1,44 @@
+{
+    "63863304cf135869e79fc4732716c1c0": {
+        "name": "新規ユーザー",
+        "ip": "::1",
+        "basenode": "node-616",
+        "email": "b@samaple.com",
+        "password": "password"
+    },
+    "6c35e0b33af4775e4b9edfc3b1f40af0": {
+        "name": "新規ユーザー",
+        "ip": "::1",
+        "basenode": "node-600",
+        "email": "c@sample.com",
+        "password": "password"
+    },
+    "721c31805484b5457266efc6bfccdfc6": {
+        "name": "新規ユーザー",
+        "ip": "::1",
+        "basenode": "node-916",
+        "email": "a@samaple.com",
+        "password": "password"
+    },
+    "98aa5bf49ebd25d834347c2fc6b631da": {
+        "name": "新規ユーザー",
+        "ip": "::1",
+        "basenode": "node-655",
+        "email": "d@sample.com",
+        "password": "password"
+    },
+    "apikey1": {
+        "name": "Tanaka",
+        "ip": "192.168.1.10",
+        "basenode": "node01",
+        "email": "tanaka@example.com",
+        "password": "pass123"
+    },
+    "apikey2": {
+        "name": "Sato",
+        "ip": "192.168.1.11",
+        "basenode": "node02",
+        "email": "sato@example.com",
+        "password": "pass456"
+    }
+}
